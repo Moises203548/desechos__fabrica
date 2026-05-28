@@ -1,20 +1,22 @@
 package co.edu.udec.desechosfabrica.domain.model;
 
+import co.edu.udec.desechosfabrica.domain.valueobjects.CapacidadEnvase;
+
 public class Envase {
     private final int idEnvase;
     private String material;
     private boolean homologado;
     private String tipo;
-    private double capacidad;
+    private CapacidadEnvase capacidad;
 
-    public Envase(int idEnvase, String material, boolean homologado,String tipo, double capacidad) {
+    public Envase(int idEnvase, String material, boolean homologado,String tipo, CapacidadEnvase capacidad) {
 
         if (material == null || material.isBlank())
-            throw new IllegalArgumentException("El material del envase no puede estar vacío");
+            throw new IllegalArgumentException("El material del envase no puede estar vacio");
         if (tipo == null || tipo.isBlank())
-            throw new IllegalArgumentException("El tipo de envase no puede estar vacío");
-        if (capacidad <= 0)
-            throw new IllegalArgumentException("La capacidad debe ser mayor a 0");
+            throw new IllegalArgumentException("El tipo de envase no puede estar vacio");
+        if (capacidad == null)
+            throw new IllegalArgumentException("La capacidad no puede ser nula");
 
         this.idEnvase = idEnvase;
         this.material = material;
@@ -34,7 +36,7 @@ public class Envase {
     public String getTipo() {
         return tipo;
     }
-    public double getCapacidad() {
+    public CapacidadEnvase getCapacidad() {
         return capacidad;
     }
 

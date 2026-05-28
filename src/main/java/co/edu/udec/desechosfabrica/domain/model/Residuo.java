@@ -1,5 +1,6 @@
 package co.edu.udec.desechosfabrica.domain.model;
 import co.edu.udec.desechosfabrica.domain.enums.TipoResiduo;
+import co.edu.udec.desechosfabrica.domain.exceptions.ResiduoException;
 import co.edu.udec.desechosfabrica.domain.valueobjects.PesoKg;
 
 import java.time.LocalDate;
@@ -16,11 +17,11 @@ public class Residuo {
     public Residuo(int idResiduo, TipoResiduo tipoResiduo, boolean peligroso,PesoKg pesoKg, LocalDate fechaGeneracion, int idProductor) {
 
         if (tipoResiduo == null)
-            throw new IllegalArgumentException("El tipo de residuo no puede ser nulo");
+            throw new ResiduoException("El tipo de residuo no puede ser nulo");
         if (pesoKg == null)
-            throw new IllegalArgumentException("El peso no puede ser nulo");
+            throw new ResiduoException("El peso no puede ser nulo");
         if (fechaGeneracion == null)
-            throw new IllegalArgumentException("La fecha de generación no puede ser nula");
+            throw new ResiduoException("La fecha de generación no puede ser nula");
 
         this.idResiduo = idResiduo;
         this.tipoResiduo = tipoResiduo;

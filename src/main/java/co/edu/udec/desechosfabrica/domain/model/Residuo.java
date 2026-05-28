@@ -1,4 +1,6 @@
 package co.edu.udec.desechosfabrica.domain.model;
+import co.edu.udec.desechosfabrica.domain.valueobjects.PesoKg;
+
 import java.time.LocalDate;
 
 public class Residuo {
@@ -6,17 +8,16 @@ public class Residuo {
     private final int idResiduo;
     private String tipoResiduo;
     private boolean peligroso;
-    private double pesoKg;
+    private PesoKg pesoKg;
     private LocalDate fechaGeneracion;
     private int idProductor;
 
-    public Residuo(int idResiduo, String tipoResiduo, boolean peligroso,
-                   double pesoKg, LocalDate fechaGeneracion, int idProductor) {
+    public Residuo(int idResiduo, String tipoResiduo, boolean peligroso,PesoKg pesoKg, LocalDate fechaGeneracion, int idProductor) {
 
         if (tipoResiduo == null || tipoResiduo.isBlank())
             throw new IllegalArgumentException("El tipo de residuo no puede estar vacío");
-        if (pesoKg <= 0)
-            throw new IllegalArgumentException("El peso debe ser mayor a 0");
+        if (pesoKg == null)
+            throw new IllegalArgumentException("El peso no puede ser nulo");
         if (fechaGeneracion == null)
             throw new IllegalArgumentException("La fecha de generación no puede ser nula");
 
@@ -30,21 +31,27 @@ public class Residuo {
 
 
     public int getIdResiduo() {
+
         return idResiduo;
     }
     public String getTipoResiduo() {
+
         return tipoResiduo;
     }
     public boolean isPeligroso() {
+
         return peligroso;
     }
-    public double getPesoKg() {
+    public PesoKg getPesoKg() {
+
         return pesoKg;
     }
     public LocalDate getFechaGeneracion() {
+
         return fechaGeneracion;
     }
     public int getIdProductor() {
+
         return idProductor;
     }
 }

@@ -29,7 +29,7 @@ public class Traslado {
         if (tipoTraslado == null || tipoTraslado.isBlank())
             throw new IllegalArgumentException("El tipo de traslado no puede estar vacio");
         if (estadoTraslado == null)
-            throw new IllegalArgumentException("El estado del traslado no puede ser nulo");
+            throw new IllegalArgumentException("El estado del traslado no puede se nulo");
 
         this.idTraslado = idTraslado;
         this.cantidadTrasladada = cantidadTrasladada;

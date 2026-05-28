@@ -1,6 +1,7 @@
 package co.edu.udec.desechosfabrica.domain.model;
 
 import co.edu.udec.desechosfabrica.domain.enums.EstadoTraslado;
+import co.edu.udec.desechosfabrica.domain.exceptions.TrasladoException;
 
 import java.time.LocalDate;
 
@@ -19,17 +20,17 @@ public class Traslado {
     public Traslado(int idTraslado, double cantidadTrasladada, int idDestino, LocalDate fechaInicio, int idEnvase, LocalDate fechaLlegada, int idResiduo, String tipoTraslado, EstadoTraslado estadoTraslado) {
 
         if (cantidadTrasladada <= 0)
-            throw new IllegalArgumentException("La cantidad trasladada debe ser mayor a 0");
+            throw new TrasladoException("La cantidad trasladada debe ser mayor a 0");
         if (fechaInicio == null)
-            throw new IllegalArgumentException("La fecha de inicio no puede ser nula");
+            throw new TrasladoException("La fecha de inicio no puede ser nula");
         if (fechaLlegada == null)
-            throw new IllegalArgumentException("La fecha de llegada no puede ser nula");
+            throw new TrasladoException("La fecha de llegada no puede ser nula");
         if (fechaLlegada.isBefore(fechaInicio))
-            throw new IllegalArgumentException("La fecha de llegada no puede ser antes de la fecha de inicio");
+            throw new TrasladoException("La fecha de llegada no puede ser antes de la fecha de inicio");
         if (tipoTraslado == null || tipoTraslado.isBlank())
-            throw new IllegalArgumentException("El tipo de traslado no puede estar vacio");
+            throw new TrasladoException("El tipo de traslado no puede estar vacio");
         if (estadoTraslado == null)
-            throw new IllegalArgumentException("El estado del traslado no puede se nulo");
+            throw new TrasladoException("El estado del traslado no puede se nulo");
 
         this.idTraslado = idTraslado;
         this.cantidadTrasladada = cantidadTrasladada;

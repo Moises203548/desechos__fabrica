@@ -1,5 +1,7 @@
 package co.edu.udec.desechosfabrica.domain.model;
 
+import co.edu.udec.desechosfabrica.domain.enums.EstadoTraslado;
+
 import java.time.LocalDate;
 
 public class Traslado {
@@ -12,8 +14,9 @@ public class Traslado {
     private LocalDate fechaLlegada;
     private int idResiduo;
     private String tipoTraslado;
+    private EstadoTraslado estadoTraslado;
 
-    public Traslado(int idTraslado, double cantidadTrasladada, int idDestino, LocalDate fechaInicio, int idEnvase, LocalDate fechaLlegada, int idResiduo, String tipoTraslado) {
+    public Traslado(int idTraslado, double cantidadTrasladada, int idDestino, LocalDate fechaInicio, int idEnvase, LocalDate fechaLlegada, int idResiduo, String tipoTraslado, EstadoTraslado estadoTraslado) {
 
         if (cantidadTrasladada <= 0)
             throw new IllegalArgumentException("La cantidad trasladada debe ser mayor a 0");
@@ -25,6 +28,8 @@ public class Traslado {
             throw new IllegalArgumentException("La fecha de llegada no puede ser antes de la fecha de inicio");
         if (tipoTraslado == null || tipoTraslado.isBlank())
             throw new IllegalArgumentException("El tipo de traslado no puede estar vacio");
+        if (estadoTraslado == null)
+            throw new IllegalArgumentException("El estado del traslado no puede ser nulo");
 
         this.idTraslado = idTraslado;
         this.cantidadTrasladada = cantidadTrasladada;
@@ -34,9 +39,10 @@ public class Traslado {
         this.fechaLlegada = fechaLlegada;
         this.idResiduo = idResiduo;
         this.tipoTraslado = tipoTraslado;
+        this.estadoTraslado = estadoTraslado;
     }
 
-    // Getters
+
     public int getIdTraslado() {
         return idTraslado;
     }
@@ -60,5 +66,8 @@ public class Traslado {
     }
     public String getTipoTraslado() {
         return tipoTraslado;
+    }
+    public EstadoTraslado getEstadoTraslado() {
+        return estadoTraslado;
     }
 }
